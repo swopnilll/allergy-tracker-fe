@@ -4,10 +4,15 @@ import { toast } from "react-toastify";
 
 import { login, register } from "../../services/auth";
 
-import { getUserFromLocalStorage, addUserToLocalStorage } from "../../localStorageService/auth";
+import {
+  getUserFromLocalStorage,
+  addUserToLocalStorage,
+  removeUserFromLocalStorage,
+} from "../../localStorageService/auth";
 
 const initialState = {
   isLoading: false,
+  isSidebarOpen: false,
   user: getUserFromLocalStorage(),
 };
 
@@ -38,7 +43,16 @@ export const loginUser = createAsyncThunk(
 const userSlice = createSlice({
   name: "user",
   initialState,
-  reducers: {},
+  reducers: {
+    toggleSideBar: (state: any) => {
+      state.isSidebarOpen = !state.isSidebarOpen;
+    },
+    logoutUser: (state) => {
+      state.user = null;
+      state.isSidebarOpen = false;
+      removeUserFromLocalStorage();
+    },
+  },
   extraReducers: {
     [registerUser.pending.toString()]: (state: any) => {
       state.isLoading = true;
@@ -59,7 +73,7 @@ const userSlice = createSlice({
     [loginUser.pending.toString()]: (state) => {
       state.isLoading = true;
     },
-    [loginUser.fulfilled.toString()]: (state, { payload } ) => {
+    [loginUser.fulfilled.toString()]: (state, { payload }) => {
       console.log(payload);
       toast.success(`Successfully Loggedn into Your Account`);
       const { data: user } = payload;
@@ -74,5 +88,7 @@ const userSlice = createSlice({
     },
   },
 });
+
+export const { toggleSideBar, logoutUser } = userSlice.actions;
 
 export default userSlice.reducer;
