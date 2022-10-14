@@ -41,18 +41,31 @@ const Wrapper = styled.article`
       letter-spacing: var(--letterSpacing);
     }
   }
-  .pending {
+  .L1 {
     background: #fcefc7;
     color: #e9b949;
   }
-  .interview {
+
+  .L2 {
     background: #e0e8f9;
     color: #647acb;
   }
-  .declined {
+
+  .L3 {
     color: #d66a6a;
-    background: #ffeeee;
+    background: rgba(255, 238, 238, 1);
   }
+
+  .L4 {
+    color: #d66a6a;
+    background: rgb(247, 168, 168);
+  }
+
+  .L5 {
+    color: #d66a6a;
+    background: rgba(238, 117, 117, 0.6);
+  }
+
   .content {
     padding: 1rem 1.5rem;
   }
@@ -80,24 +93,29 @@ const Wrapper = styled.article`
     height: 30px;
     margin-top: 0.5rem;
   }
+
   footer {
     margin-top: 1rem;
   }
+
   .edit-btn,
   .delete-btn {
     letter-spacing: var(--letterSpacing);
     cursor: pointer;
     height: 30px;
   }
+
   .edit-btn {
     color: var(--green-dark);
     background: var(--green-light);
     margin-right: 0.5rem;
   }
+  
   .delete-btn {
     color: var(--red-dark);
     background: var(--red-light);
   }
+
   &:hover .actions {
     visibility: visible;
   }

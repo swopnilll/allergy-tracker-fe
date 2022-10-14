@@ -13,7 +13,7 @@ const initialState: AllergySlice = {
   name: "",
   severity: "L1",
   isHighRisk: false,
-  description: "",
+  symtoms: "",
 };
 
 export const addAllergy = createAsyncThunk(

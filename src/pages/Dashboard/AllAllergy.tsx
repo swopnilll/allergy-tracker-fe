@@ -1,6 +1,11 @@
+import { AllergiesContainer, SearchContainer } from "../../components"
+
 const AllAllergy = () => {
   return (
-    <div>AllAllergy</div>
+    <>
+      <SearchContainer />
+      <AllergiesContainer />
+    </>
   )
 }
 

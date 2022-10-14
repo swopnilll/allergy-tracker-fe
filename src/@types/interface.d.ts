@@ -4,13 +4,13 @@ interface AllergySlice {
     name,
     severity,
     isHighRisk,
-    description,
+    symtoms,
 }
 
 interface AllergyPayload {
     name,
     severity,
     isHighRisk,
-    description,
+    symtoms,
     userId
 }

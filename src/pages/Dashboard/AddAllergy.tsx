@@ -17,7 +17,7 @@ const AddAllergy = () => {
     name,
     severity,
     isHighRisk,
-    description } = useSelector((store: any) => store.allergy);
+    symtoms } = useSelector((store: any) => store.allergy);
 
   const { user } = useSelector((store: any) => store.user)
 
@@ -26,7 +26,7 @@ const AddAllergy = () => {
   const handleSubmit = (e: any) => {
     e.preventDefault();
 
-    if (!name || !severity || !description) {
+    if (!name || !severity || !symtoms) {
       toast.error('Please Fill Out All Fields');
       return;
     }
@@ -35,7 +35,7 @@ const AddAllergy = () => {
       name,
       severity,
       isHighRisk,
-      description,
+      symtoms,
       userId: user.id
     }))
 
@@ -81,8 +81,8 @@ const AddAllergy = () => {
 
         <FormRow
           type='text'
-          name='description'
-          value={description}
+          name='symtoms'
+          value={symtoms}
           handleChange={handleInput}
         />
 
