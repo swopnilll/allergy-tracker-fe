@@ -5,7 +5,7 @@ import { toast } from 'react-toastify';
 
 import { useSelector, useDispatch } from 'react-redux';
 
-import { loginUser, registerUser } from '../reducers/user/UserSlice';
+import { loginUser, registerUser } from '../reducers/users/UserSlice'
 
 import { FormRow, Logo } from '../components'
 

@@ -1,10 +1,12 @@
 import { configureStore } from "@reduxjs/toolkit";
 
-import  UserSlice  from "../reducers/user/UserSlice";
+import  UserSlice  from '../reducers/users/UserSlice'
+import AllergySlice from "../reducers/allergy/AllergySlice";
 
 const store = configureStore({
   reducer: {
     user: UserSlice,
+    allergy: AllergySlice
   },
 });
 

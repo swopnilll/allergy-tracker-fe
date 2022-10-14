@@ -2,7 +2,7 @@ import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 
 import { toast } from "react-toastify";
 
-import { login, register } from "../../services/auth";
+import { loginUserThunk, registerUserThunk,} from './userThunk';
 
 import {
   getUserFromLocalStorage,
@@ -19,24 +19,14 @@ const initialState = {
 export const registerUser = createAsyncThunk(
   "/user/registerUser",
   async (payload: RegisterPayload, thunkApi) => {
-    try {
-      const resp = await register(payload);
-      return resp;
-    } catch (error: any) {
-      return thunkApi.rejectWithValue(error);
-    }
+    return registerUserThunk(payload, thunkApi)
   }
 );
 
 export const loginUser = createAsyncThunk(
   "user/loginUser",
   async (payload: LoginPayload, thunkAPI) => {
-    try {
-      const resp = await login(payload);
-      return resp;
-    } catch (error: any) {
-      return thunkAPI.rejectWithValue(error);
-    }
+    return loginUserThunk(payload, thunkAPI)
   }
 );
 

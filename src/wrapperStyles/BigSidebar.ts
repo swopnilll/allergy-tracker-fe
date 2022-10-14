@@ -24,7 +24,7 @@ const Wrapper = styled.aside`
       height: 6rem;
       display: flex;
       align-items: center;
-      padding-left: 2.5rem;
+      justify-content: center;
     }
     .nav-links {
       padding-top: 2rem;
@@ -60,6 +60,10 @@ const Wrapper = styled.aside`
     }
     .active .icon {
       color: var(--primary-500);
+    }
+
+    header img{
+      width: 60px;
     }
   }
 `

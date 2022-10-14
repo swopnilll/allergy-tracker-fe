@@ -7,8 +7,7 @@ import { FaAlignLeft, FaCaretDown, FaHome, FaUserCircle } from 'react-icons/fa'
 import Wrapper from "../wrapperStyles/Navbar"
 import Logo from './Logo'
 
-import { logoutUser, toggleSideBar } from '../reducers/user/UserSlice'
-
+import { logoutUser, toggleSideBar } from '../reducers/users/UserSlice'
 
 const Navbar = () => {
 

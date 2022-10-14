@@ -31,7 +31,12 @@ export const setRefreshToken = (refreshToken: string) => {
  * @returns {String}
  */
 export const getAccessToken = () => {
-  return getValueFromLocalStorage("accessToken");
+  const userDetails = getValueFromLocalStorage("user");
+  console.log("userDetails", userDetails);
+
+  const accessToken = userDetails ? JSON.parse(userDetails).accessToken : null;
+
+  return accessToken;
 };
 
 /**
@@ -54,27 +59,26 @@ export const validateAuthentication = () => {
 
 /**
  * Method to add user to local storage.
- * 
- * @param user 
+ *
+ * @param user
  */
 export const addUserToLocalStorage = (user: any) => {
-   setValueInLocalStorage('user', JSON.stringify(user));
+  setValueInLocalStorage("user", JSON.stringify(user));
 };
 
 /**
  * Method to remove user from local storage.
  */
 export const removeUserFromLocalStorage = () => {
-  removeValueFromLocalStorage('user');
+  removeValueFromLocalStorage("user");
 };
 
 /**
- * 
+ *
  * @returns object
  */
 export const getUserFromLocalStorage = () => {
-  const result = getValueFromLocalStorage('user');
+  const result = getValueFromLocalStorage("user");
   const user = result ? JSON.parse(result) : null;
   return user;
 };
-

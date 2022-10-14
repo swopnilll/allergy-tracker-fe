@@ -1,4 +1,4 @@
-const FormRow = ({ type, name, value, handleChange, labelText, readOnly }: any) => {
+const Checkbox = ({ name, checked, handleChange, labelText, readOnly }: any) => {
     return (
       <div className='form-row'>
         <label htmlFor={name} className='form-label'>
@@ -6,15 +6,14 @@ const FormRow = ({ type, name, value, handleChange, labelText, readOnly }: any) 
         </label>
         
         <input
-          type={type}
-          value={value}
-          name={name}
+          type="checkbox"
+          checked={checked}
           onChange={handleChange}
-          className='form-input'
+          className='form-checkbox'
           readOnly={readOnly || false}
         />
       </div>
     );
   };
   
-  export default FormRow;
+  export default Checkbox;
