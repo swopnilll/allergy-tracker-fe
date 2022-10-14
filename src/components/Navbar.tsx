@@ -17,7 +17,6 @@ const Navbar = () => {
     const [showLogout, setShowLogout] = useState(false)
 
     const toggle = () => {
-        console.log("toggling")
         dispatch(toggleSideBar());
     };
 

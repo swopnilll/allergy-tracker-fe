@@ -32,7 +32,6 @@ export const setRefreshToken = (refreshToken: string) => {
  */
 export const getAccessToken = () => {
   const userDetails = getValueFromLocalStorage("user");
-  console.log("userDetails", userDetails);
 
   const accessToken = userDetails ? JSON.parse(userDetails).accessToken : null;
 

@@ -20,8 +20,6 @@ const AddAllergy = () => {
     isHighRisk,
     symtoms } = useSelector((store: any) => store.allergy);
 
-    console.log("isHighRisk", isHighRisk);
-
   const { user } = useSelector((store: any) => store.user)
 
   const dispatch = useDispatch<any>();
@@ -35,7 +33,7 @@ const AddAllergy = () => {
     }
 
     if (isEditing) {
-      console.log(isHighRisk)
+
       dispatch(handleEditAllergy({
         name,
         severity,
@@ -53,7 +51,6 @@ const AddAllergy = () => {
       }))
     }
 
-    console.log("before clear dispatch")
 
     dispatch(clearValues());
   };
@@ -66,10 +63,7 @@ const AddAllergy = () => {
   };
 
   const handleCheckBoxChange = (e: any) => {
-    console.log("handle checkbox change")
     const name = "isHighRisk";
-
-    console.log(e.target.checked);
 
     dispatch(handleChange({ name, value: e.target.checked }))
   }

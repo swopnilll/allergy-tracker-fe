@@ -26,8 +26,6 @@ export const getAllAllergy = createAsyncThunk(
     
     const { search } = thunkApi.getState().allAllergies;
 
-    console.log(search);
-
     try {
       const response = await getAllAllergiesForUser(+payload.id, search || "");
       return response.data;

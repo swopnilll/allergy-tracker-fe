@@ -82,7 +82,6 @@ const getAccessTokenForProtectedEndpoints = () => {
  * Protected axios request interceptor.
  */
 protectedAxios.interceptors.request.use((config) => {
-  console.log(getAccessTokenForProtectedEndpoints());
   config.headers!.Authorization = `Bearer ${getAccessTokenForProtectedEndpoints().toString()}`;
   return config;
 });

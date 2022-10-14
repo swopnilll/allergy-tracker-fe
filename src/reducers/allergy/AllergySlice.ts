@@ -58,7 +58,6 @@ export const handleEditAllergy = createAsyncThunk(
   "allergy/handleEditAllergy",
 
   async (payload: any, thunkApi) => {
-    console.log(payload);
     try {
       return await editAllergy(payload);
     } catch (error: any) {
@@ -85,9 +84,6 @@ const allergySlice = createSlice({
       };
     },
     setEditJob: (state, { payload }) => {
-      console.log("Going to edit");
-      console.log(payload);
-      console.log(state);
       return { ...state, isEditing: true, ...payload };
     },
   },
