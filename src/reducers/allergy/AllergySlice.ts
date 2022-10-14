@@ -23,7 +23,7 @@ const initialState: AllergySlice = {
 export const addAllergy = createAsyncThunk(
   "allergy/addAllergy",
 
-  async (payload: AllergyPayload, thunkApi) => {
+  async (payload: AllergyPayload, thunkApi: any) => {
     try {
       return await addAllergyForUser(payload);
     } catch (error: any) {
@@ -42,7 +42,7 @@ export const handleDeleteAllergy = createAsyncThunk(
     try {
       const resp = await deleteAllergy(allergyId);
 
-      thunkApi.dispatch(getAllAllergy(userId));
+      thunkApi.dispatch(getAllAllergy({ id: userId, searchParam: "" }));
 
       return resp;
     } catch (error: any) {

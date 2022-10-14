@@ -6,13 +6,11 @@ import { logoutUser } from "../users/UserSlice";
 
 const initialFiltersState = {
   search: "",
-  searchStatus: "all",
-  searchType: "all",
   sort: "isHighRisk",
   sortOptions: ["latest", "oldest", "a-z", "z-a", "isHighRisk"],
 };
 
-const initialState = {
+const initialState: AllAllergySlice = {
   isLoading: false,
   allergies: [],
   totalAllergies: 0,
@@ -24,9 +22,14 @@ const initialState = {
 export const getAllAllergy = createAsyncThunk(
   "allAllergies/getAllAllergy",
 
-  async (userId: number, thunkApi: any) => {
+  async (payload: any, thunkApi: any) => {
+    
+    const { search } = thunkApi.getState().allAllergies;
+
+    console.log(search);
+
     try {
-      return await getAllAllergiesForUser(+userId);
+      return await getAllAllergiesForUser(+payload.id, search || "");
     } catch (error: any) {
       if (error.response.status === 401) {
         thunkApi.dispatch(logoutUser());
@@ -43,8 +46,17 @@ const allAllergiesSlice = createSlice({
     showLoading: (state) => {
       state.isLoading = true;
     },
+
     hideLoading: (state) => {
       state.isLoading = false;
+    },
+
+    handleChange: (state, { payload: { name, value } }) => {
+      state[name as keyof AllAllergySlice] = value;
+    },
+
+    clearFilters: (state) => {
+      return { ...state, ...initialFiltersState };
     },
   },
   extraReducers: {
@@ -64,9 +76,6 @@ const allAllergiesSlice = createSlice({
   },
 });
 
-export const {
-  showLoading,
-  hideLoading,
-} = allAllergiesSlice.actions;
+export const { showLoading, hideLoading, handleChange, clearFilters } = allAllergiesSlice.actions;
 
 export default allAllergiesSlice.reducer;

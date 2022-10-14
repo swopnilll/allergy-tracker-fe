@@ -1,8 +1,8 @@
 import { ALLERGIES } from "../constant/urlContant";
 import { protectedAxios } from "./axios";
 
-export const getAllAllergiesForUser = async (userId: number) => {
-  const response = await protectedAxios.get(`/users/${userId}/allergies`);
+export const getAllAllergiesForUser = async (userId: number, queryString = "") => {
+  const response = await protectedAxios.get(`/users/${userId}/allergies?name=${queryString}`);
 
   return response;
 };

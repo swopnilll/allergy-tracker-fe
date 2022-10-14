@@ -9,7 +9,6 @@ import Checkbox from '../../components/Checkbox';
 import FormRowSelect from '../../components/FormRowSelect';
 
 import { handleChange, clearValues, addAllergy, handleEditAllergy } from '../../reducers/allergy/AllergySlice';
-import { editAllergy } from '../../services/allergyService';
 
 const AddAllergy = () => {
   const {

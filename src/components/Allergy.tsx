@@ -3,7 +3,6 @@ import { Link } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 
 import Wrapper from '../wrapperStyles/allergy';
-import { deleteAllergy } from '../services/allergyService';
 import { handleDeleteAllergy, setEditJob } from '../reducers/allergy/AllergySlice';
 
 const Allergy = ({ id, name, severity, is_high_risk, symtoms }: any) => {

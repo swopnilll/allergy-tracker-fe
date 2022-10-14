@@ -11,13 +11,13 @@ import Loading from './Loading';
 
 const AllergiesContainer = () => {
   const { user } = useSelector((store: any) => store.user);
-  const { allergies, isLoading } = useSelector((store: any) => store.allAllergies);
+  const { allergies, isLoading, search } = useSelector((store: any) => store.allAllergies);
 
   const dispatch = useDispatch<any>();
 
   useEffect(() => {
-    dispatch(getAllAllergy(user.id))
-  }, []);
+    dispatch(getAllAllergy({ id: user.id, searchParam: "" }))
+  }, [search]);
 
   if (isLoading) {
     return (
