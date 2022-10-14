@@ -15,7 +15,8 @@ function App() {
         <Route path='/' element={<ProtectedRoute>
           <SharedLayout />
         </ProtectedRoute>}>
-          <Route index element={<Stats />} />
+          <Route  index element={<Profile />} />
+          <Route path="stats" element={<Stats />} />
           <Route path='all-allergy' element={<AllAllergy />} />
           <Route path='add-allergy' element={<AddAllergy />} />
           <Route path='profile' element={<Profile />} />

@@ -8,13 +8,15 @@ import { FormRow } from '../../components';
 import Checkbox from '../../components/Checkbox';
 import FormRowSelect from '../../components/FormRowSelect';
 
-import { handleChange, clearValues, addAllergy } from '../../reducers/allergy/AllergySlice';
+import { handleChange, clearValues, addAllergy, handleEditAllergy } from '../../reducers/allergy/AllergySlice';
+import { editAllergy } from '../../services/allergyService';
 
 const AddAllergy = () => {
   const {
     isLoading,
     isEditing,
     name,
+    editAllergyId,
     severity,
     isHighRisk,
     symtoms } = useSelector((store: any) => store.allergy);
@@ -31,13 +33,25 @@ const AddAllergy = () => {
       return;
     }
 
-    dispatch(addAllergy({
-      name,
-      severity,
-      isHighRisk,
-      symtoms,
-      userId: user.id
-    }))
+    if (isEditing) {
+      dispatch(handleEditAllergy({
+        name,
+        severity,
+        isHighRisk,
+        symtoms,
+        editAllergyId
+      }))
+    } else {
+      dispatch(addAllergy({
+        name,
+        severity,
+        isHighRisk,
+        symtoms,
+        userId: user.id
+      }))
+    }
+
+    console.log("before clear dispatch")
 
     dispatch(clearValues());
   };
@@ -46,18 +60,13 @@ const AddAllergy = () => {
     const name = e.target.name;
     const value = e.target.value;
 
-    console.log({ name, value })
-
     dispatch(handleChange({ name, value }))
   };
 
   const handleCheckBoxChange = (e: any) => {
-    console.log(e.target.checked)
-
     const name = "isHighRisk";
-    const value = e.target.checked;
 
-    dispatch(handleChange({ name, value }))
+    dispatch(handleChange({ name, isHighRisk: !isHighRisk }))
   }
 
   return (

@@ -7,7 +7,7 @@ const links = [
   {
     id: 1,
     text: 'stats',
-    path: '/',
+    path: '/stats',
     icon: <IoBarChartSharp />,
   },
   {
@@ -25,7 +25,7 @@ const links = [
   {
     id: 4,
     text: 'profile',
-    path: 'profile',
+    path: '/',
     icon: <ImProfile />,
   },
 ];

@@ -5,6 +5,7 @@ interface AllergySlice {
     severity,
     isHighRisk,
     symtoms,
+    editAllergyId
 }
 
 interface AllergyPayload {

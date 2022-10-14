@@ -51,30 +51,30 @@ const userSlice = createSlice({
       const { data: user } = payload;
 
       state.isLoading = false;
-      console.log(user);
       state.user = user;
       toast.success(`Successfully Registered Your Account`);
       addUserToLocalStorage(user);
     },
     [registerUser.rejected.toString()]: (state: any, { payload }) => {
       state.isLoading = false;
-      toast.error(payload);
+      toast.error(payload.data);
     },
     [loginUser.pending.toString()]: (state) => {
       state.isLoading = true;
     },
     [loginUser.fulfilled.toString()]: (state, { payload }) => {
-      console.log(payload);
-      toast.success(`Successfully Loggedn into Your Account`);
       const { data: user } = payload;
-      console.log(user);
+
       state.isLoading = false;
       state.user = user;
+
       addUserToLocalStorage(user);
+
+      toast.success(`Successfully Logged into Your Account`);
     },
     [loginUser.rejected.toString()]: (state, { payload }) => {
       state.isLoading = false;
-      toast.error(payload);
+      toast.error(payload.data);
     },
   },
 });

@@ -1,11 +1,36 @@
 import { Link } from 'react-router-dom';
 
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 
 import Wrapper from '../wrapperStyles/allergy';
+import { deleteAllergy } from '../services/allergyService';
+import { handleDeleteAllergy, setEditJob } from '../reducers/allergy/AllergySlice';
 
 const Allergy = ({ id, name, severity, is_high_risk, symtoms }: any) => {
-  const dispatch = useDispatch();
+  const { user } = useSelector((store: any) => store.user);
+
+  const dispatch = useDispatch<any>();
+
+  const handleDeleteButtonClick = () => {
+    dispatch(handleDeleteAllergy({
+      allergyId: id,
+      userId: user.id
+    }))
+  }
+
+  const handleEditButtonClick = () => {
+   
+    dispatch(setEditJob(
+      {
+        editAllergyId: id,
+        name,
+        severity,
+        isHighRisk: is_high_risk,
+        symtoms
+      }
+    ))
+  }
+
 
 
   return (
@@ -31,20 +56,16 @@ const Allergy = ({ id, name, severity, is_high_risk, symtoms }: any) => {
         <footer>
           <div className='actions'>
             <Link
-              to='/add-job'
+              to='/add-allergy'
               className='btn edit-btn'
-              onClick={() => {
-                console.log('edit job');
-              }}
+              onClick={handleEditButtonClick}
             >
               Edit
             </Link>
             <button
               type='button'
               className='btn delete-btn'
-              onClick={() => {
-                console.log('delete  job');
-              }}
+              onClick={handleDeleteButtonClick}
             >
               Delete
             </button>

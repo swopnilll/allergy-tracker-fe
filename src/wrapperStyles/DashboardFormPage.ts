@@ -73,7 +73,7 @@ const Wrapper = styled.section`
 
   @media (min-width: 1120px) {
     .form-center {
-      grid-template-columns: 1fr 1fr 1fr;
+      grid-template-columns: 1fr 1fr;
     }
 
     .form-center button {

@@ -32,8 +32,6 @@ export const getAllAllergy = createAsyncThunk(
         thunkApi.dispatch(logoutUser());
         return thunkApi.rejectWithValue("Unauthorized! Logging Out...");
       }
-
-      return thunkApi.rejectWithValue(error);
     }
   }
 );
