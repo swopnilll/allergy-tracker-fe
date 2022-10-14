@@ -85,6 +85,7 @@ const allergySlice = createSlice({
       };
     },
     setEditJob: (state, { payload }) => {
+      console.log("Going to edit");
       console.log(payload);
       console.log(state);
       return { ...state, isEditing: true, ...payload };

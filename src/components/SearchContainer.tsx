@@ -2,13 +2,13 @@ import { useSelector, useDispatch } from 'react-redux';
 import { clearFilters, handleChange } from '../reducers/allAllergies/AllAllergySlice';
 
 import FormRow from './FormRow';
-import FormRowSelect from './FormRowSelect';
+// import FormRowSelect from './FormRowSelect';
 
 import Wrapper from '../wrapperStyles/SearchContainer';
 
 const SearchContainer = () => {
 
-  const { isLoading, search, sort, sortOptions } =
+  const { isLoading, search } =
     useSelector((store: any) => store.allAllergies);
 
   const dispatch = useDispatch<any>();
@@ -17,11 +17,6 @@ const SearchContainer = () => {
     if (isLoading) return;
 
     dispatch(handleChange({ name: e.target.name, value: e.target.value }));
-  };
-
-  const handleSubmit = (e: any) => {
-    e.preventDefault();
-    dispatch(clearFilters());
   };
 
   return (

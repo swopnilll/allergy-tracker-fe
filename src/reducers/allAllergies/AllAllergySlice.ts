@@ -29,7 +29,8 @@ export const getAllAllergy = createAsyncThunk(
     console.log(search);
 
     try {
-      return await getAllAllergiesForUser(+payload.id, search || "");
+      const response = await getAllAllergiesForUser(+payload.id, search || "");
+      return response.data;
     } catch (error: any) {
       if (error.response.status === 401) {
         thunkApi.dispatch(logoutUser());
@@ -67,7 +68,7 @@ const allAllergiesSlice = createSlice({
       state.isLoading = false;
       const { data: allAllergies } = payload;
 
-      state.allergies = allAllergies.data;
+      state.allergies = allAllergies;
     },
     [getAllAllergy.rejected.toString()]: (state, { payload }) => {
       state.isLoading = false;
